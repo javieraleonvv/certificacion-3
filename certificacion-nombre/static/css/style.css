@@ -1,10 +1,418 @@
-*{
+/* Estilos de Hug Express */
+* {
     box-sizing: border-box;
 }
-body{
+
+:root {
+    --lila: #b9a5d9;
+    --lila-oscuro: #9d83c7;
+    --gris-claro: #eeeeee;
+    --texto: #171717;
+}
+
+body {
     margin: 0;
-    padding: 20px;
-    font-family:  Arial, Helvetica, sans-serif;
-    background-color: white;
-    color: black;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: #fff;
+    font-size: 15px;
+}
+
+.nav {
+    width: min(100% - 48px, 660px);
+    margin: 24px auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 12px;
+    align-items: start;
+}
+
+.logo {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    min-height: 52px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--lila);
+}
+
+.logo img {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.buscador {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 9px;
+    position: relative;
+}
+
+.boton {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+}
+
+.boton input {
+    min-width: 0;
+    width: 100%;
+    height: 27px;
+    padding: 5px 10px;
+    border: 1px solid #888;
+    border-radius: 16px 0 0 16px;
+    font: inherit;
+    background: #fff;
+}
+
+.boton button,
+.tarjeta button {
+    border: 2px solid #171717;
+    background: var(--lila-oscuro);
+    color: #080808;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 1px 2px 0 #555;
+}
+
+.boton button {
+    height: 27px;
+    padding: 3px 10px;
+    border-radius: 0 3px 3px 0;
+    font-size: 12px;
+}
+
+.buscador > a {
+    position: absolute;
+    top: 62px;
+    right: 0;
+    color: #111;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navegacion {
+    position: absolute;
+    top: 62px;
+    left: calc(-1 * (min(100vw - 48px, 660px) - 202px));
+    width: min(100vw - 48px, 660px);
+    min-height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 0 10px;
+    border-bottom: 2px solid #222;
+}
+
+.navegacion img {
+    width: 22px;
+    height: 22px;
+}
+
+.navegacion a {
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.navegacion a + a::before {
+    content: ">";
+    margin-right: 12px;
+    color: #111;
+}
+
+.tarjeta-amigos {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    margin-top: 62px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+}
+
+.tarjeta {
+    position: relative;
+    min-height: 105px;
+    padding: 13px 12px;
+    padding-left: 130px;
+    border-radius: 18px;
+    background: var(--gris-claro);
+    display: block;
+}
+
+.tarjeta > img {
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    width: 108px;
+    height: 68px;
+    object-fit: cover;
+    border: 2px solid #111;
+    background:
+        linear-gradient(32deg, transparent 48.8%, #777 49.5%, #777 50.5%, transparent 51.2%),
+        linear-gradient(148deg, transparent 48.8%, #777 49.5%, #777 50.5%, transparent 51.2%),
+        #fff;
+}
+
+.tarjeta h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.tarjeta p {
+    margin: 5px 0;
+    font-size: 12px;
+    line-height: 1.25;
+}
+
+.tarjeta p:nth-of-type(2) {
+    margin-top: 10px;
+}
+
+.acciones.amigos {
+    position: absolute;
+    top: 25px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.acciones.amigos p {
+    margin: 0;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.tarjeta button {
+    padding: 4px 9px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.barra-lateral {
+    grid-column: 2;
+    grid-row: 2 / 4;
+    margin-top: 62px;
+    min-height: 420px;
+    padding: 48px 18px 25px;
+    background: var(--lila);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barra-lateral p {
+    margin: 0 0 25px;
+    font-size: 17px;
+    line-height: 1.35;
+}
+
+.barra-lateral .negrita {
+    font-weight: 700;
+}
+
+.barra-lateral .blanco {
+    color: #fff;
+}
+
+.barra-lateral a {
+    margin-top: auto;
+    color: #111;
+    font-size: 17px;
+    line-height: 1.4;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+    .nav {
+        width: min(100% - 64px, 1050px);
+        grid-template-columns: minmax(0, 1fr) 260px;
+        column-gap: 16px;
+    }
+
+    .logo h1 {
+        font-size: 25px;
+    }
+
+    .buscador {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 12px;
+    }
+
+    .boton {
+        width: 280px;
+        flex: 0 1 280px;
+    }
+
+    .buscador > a {
+        top: 0;
+        right: 0;
+        transform: translateY(62px);
+    }
+
+    .navegacion {
+        left: calc(-1 * (min(100vw - 64px, 1050px) - 276px));
+        width: min(100vw - 64px, 1050px);
+    }
+
+    .tarjeta-amigos,
+    .barra-lateral {
+        margin-top: 62px;
+    }
+
+    .tarjeta {
+        min-height: 118px;
+        padding-left: 145px;
+    }
+
+    .tarjeta > img {
+        width: 120px;
+        height: 76px;
+    }
+
+    .tarjeta h2 {
+        font-size: 22px;
+    }
+
+    .tarjeta p,
+    .acciones.amigos p {
+        font-size: 13px;
+    }
+
+    .tarjeta button {
+        font-size: 13px;
+    }
+
+    .barra-lateral {
+        min-height: 475px;
+        padding: 55px 25px 28px;
+    }
+
+    .barra-lateral p,
+    .barra-lateral a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 560px) {
+    .nav {
+        width: calc(100% - 28px);
+        margin: 14px auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .logo,
+    .buscador,
+    .tarjeta-amigos,
+    .barra-lateral {
+        width: 100%;
+    }
+
+    .logo h1 {
+        font-size: 21px;
+    }
+
+    .buscador {
+        min-height: 42px;
+    }
+
+    .buscador > a,
+    .navegacion {
+        position: static;
+        transform: none;
+    }
+
+    .buscador > a {
+        font-size: 15px;
+        margin-left: auto;
+    }
+
+    .navegacion {
+        order: 3;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .tarjeta-amigos,
+    .barra-lateral {
+        margin-top: 0;
+    }
+
+    .tarjeta {
+        min-height: 145px;
+        padding: 12px 10px 12px 105px;
+    }
+
+    .tarjeta > img {
+        left: 10px;
+        width: 84px;
+        height: 64px;
+    }
+
+    .tarjeta h2 {
+        font-size: 17px;
+        padding-right: 0;
+    }
+
+    .tarjeta p {
+        font-size: 11px;
+    }
+
+    .acciones.amigos {
+        top: auto;
+        right: 10px;
+        bottom: 10px;
+        gap: 5px;
+    }
+
+    .acciones.amigos p {
+        font-size: 11px;
+    }
+
+    .tarjeta button {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+
+    .barra-lateral {
+        min-height: 280px;
+        padding: 28px 24px;
+    }
+
+    .barra-lateral p,
+    .barra-lateral a {
+        font-size: 18px;
+    }
 }
